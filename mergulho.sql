@@ -65,8 +65,8 @@ CREATE TABLE telefone(
 
 CREATE TABLE mergulho(
   pacote_cod_pacote INTEGER NOT NULL,
-  data_mergulho     DATE    NOT NULL,
-  hora_mergulho     TIME    NOT NULL,
+  data_mergulho     DATE      NOT NULL,
+  hora_mergulho     TIMESTAMP NOT NULL,
   CONSTRAINT pk_mergulho
     PRIMARY KEY(pacote_cod_pacote,data_mergulho,hora_mergulho),
   CONSTRAINT fk_mergulho_pacote
@@ -75,10 +75,10 @@ CREATE TABLE mergulho(
 );
 
 CREATE TABLE participante(
-  cliente_cod_cliente        INTEGER NOT NULL,
-  mergulho_mergulho_hora     TIME    NOT NULL,
-  mergulho_mergulho_data     DATE    NOT NULL,
-  mergulho_pacote_cod_pacote INTEGER NOT NULL,
+  cliente_cod_cliente        INTEGER   NOT NULL,
+  mergulho_mergulho_hora     TIMESTAMP NOT NULL,
+  mergulho_mergulho_data     DATE      NOT NULL,
+  mergulho_pacote_cod_pacote INTEGER   NOT NULL,
   CONSTRAINT pk_participante
     PRIMARY KEY(cliente_cod_cliente,mergulho_mergulho_hora,mergulho_mergulho_data,mergulho_pacote_cod_pacote),
   CONSTRAINT fk_participante_cliente
@@ -90,10 +90,10 @@ CREATE TABLE participante(
 );
 
 CREATE TABLE acompanha(
-  mergulha_hora              TIME    NOT NULL,
-  mergulha_data              DATE    NOT NULL,
-  instrutor_cod_instrutor    INTEGER NOT NULL,
-  mergulho_pacote_cod_pacote INTEGER NOT NULL,
+  mergulha_hora              TIMESTAMP NOT NULL,
+  mergulha_data              DATE      NOT NULL,
+  instrutor_cod_instrutor    INTEGER   NOT NULL,
+  mergulho_pacote_cod_pacote INTEGER   NOT NULL,
   CONSTRAINT pk_acompanha
     PRIMARY KEY(mergulha_hora,mergulha_data,instrutor_cod_instrutor,mergulho_pacote_cod_pacote),
   CONSTRAINT fk_acompanha_instrutor
